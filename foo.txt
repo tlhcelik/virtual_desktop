@@ -1,0 +1,33 @@
+
+class Player(object):
+    def __init__(self):
+        print "Player Create"
+        self.rect = pygame.rect.Rect((64, 54, 35, 35))
+
+    def handle_keys(self):
+        key = pygame.key.get_pressed()
+        dist = 10
+        if key[pygame.K_LEFT]:
+           self.rect.move_ip(-1, 0)
+        if key[pygame.K_RIGHT]:
+           self.rect.move_ip(1, 0)
+        if key[pygame.K_UP]:
+           self.rect.move_ip(0, -1)
+        if key[pygame.K_DOWN]:
+           self.rect.move_ip(0, 1)
+
+    def track_mouse(self):
+        self.mouse_pos_x, self.mouse_pos_y = pygame.mouse.get_pos()
+        self.rect.center = (self.mouse_pos_x, self.mouse_pos_y)
+
+    def update(self, surface):
+        #self.handle_keys()
+        self.track_mouse()
+        self.screen = surface
+        pygame.draw.rect(screen, (0, 0, 128), self.rect)
+
+    def get_x(self):
+        return self.rect.x
+    
+    def get_y(self):
+        return self.rect.y
