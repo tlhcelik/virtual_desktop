@@ -1,14 +1,31 @@
 import pygame
+from conf import *
 
 class MFile(object):
-    def __init__(self):
+    def __init__(self ,x ,y ,name ,screen):
         print "Folder Create"
-        self.rect = pygame.rect.Rect((20, 20, 30, 30))
+        self.screen = screen
+        self.name = name
+        self.x = x
+        self.y = y
+        
+        self.label = LABEL_FONT.render(self.name, 1, RED)
+        screen.blit(self.label, (self.x-15, self.y+30))
+        
+        self.rect = pygame.rect.Rect((self.x, self.y, 30, 30))
         #self.rect.center = (20, 20)
 
         #print "x :{}, y: {}, bottomleft: {}, topright : {} ".format(self.rect.x,self.rect.y,self.rect.bottomleft[1], self.rect.topright[0])
-    
-    def update(self, surface):
+    def move(self,x,y):
+        self.x = x
+        self.y = y
+        self.rect.center =(x ,y)
+        
+    def update(self, surface, is_drag = False):
+        if is_drag:
+            self.mouse_pos_x ,self.mouse_pos_y = pygame.mouse.get_pos()
+            self.move(self.mouse_pos_x ,self.mouse_pos_y)
+            
         self.screen = surface
         pygame.draw.rect(self.screen, (0, 0, 128), self.rect)
 
