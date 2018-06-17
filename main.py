@@ -10,7 +10,14 @@ screen = pygame.display.set_mode((WIDHT,HEIGHT))
 pygame.display.set_caption("Virtual Desktop")
 clock = pygame.time.Clock()
 
-p = MFile()
+file_list = []
+x = 20
+y = 20
+
+for i in range(5):
+    file_list.append(MFile(x, y)) 
+    y += 50
+    
 #Game Loop
 running = True
 while running:
@@ -28,16 +35,20 @@ while running:
             running = False
             
         mouse_pos_x ,mouse_pos_y = pygame.mouse.get_pos()
-        if mouse_pos_x >= p.rect.x and mouse_pos_x <=50:
-            if mouse_pos_y >= p.rect.y and mouse_pos_y <= 50:
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    print "p1"
-
+        for p in file_list:
+            if mouse_pos_x >= p.rect.x and mouse_pos_x <= p.rect.topright[0]:
+                if mouse_pos_y >= p.rect.y and mouse_pos_y <= p.rect.bottomright[1]:
+                    if event.type == pygame.MOUSEBUTTONDOWN:
+                        print file_list.index(p)
+                        
+                    
     #Update
     
     #Draw / render
     screen.fill(WHITE)
-    p.update(screen)
+    p.update(screen ,is_drag = False)
+    for i in file_list:
+        i.update(screen)
     
     #Push the screen 
     pygame.display.flip()
