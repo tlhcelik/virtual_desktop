@@ -3,6 +3,10 @@
 ```python
 python main.py
 ```
+
+**general schema**
+![fig 0.](https://github.com/tlhcelik/virtual_desktop/blob/master/pics/4.PNG)
+
 **stable running**
 ![fig 1.](https://github.com/tlhcelik/virtual_desktop/blob/master/pics/1.PNG)
 
