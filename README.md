@@ -5,7 +5,7 @@ python main.py
 ```
 
 **general schema**
-![fig 0.](https://github.com/tlhcelik/virtual_desktop/blob/master/pics/4.PNG)
+![fig 0.](https://github.com/tlhcelik/virtual_desktop/blob/master/pics/4.png)
 
 **stable running**
 ![fig 1.](https://github.com/tlhcelik/virtual_desktop/blob/master/pics/1.PNG)
